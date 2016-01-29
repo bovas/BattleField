@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://camel.apache.org/schema/spring
+	http://camel.apache.org/schema/spring/camel-spring.xsd">
+	
+	<!-- <bean id="jms" class="	">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="vm://localhost"/>
+			</bean>
+		</property>
+	</bean> -->
+	<!-- <bean id="ftpToJmsRouteBuilder" class="com.boaz.camel.practice.routebuilders.FtptoJmsRouteBuilder"></bean>
+	<bean id="ftpToJmsProcessor" class="com.boaz.camel.practice.processors.FtptoJmsProcessor"></bean> -->
+	
+	<bean id="recipentsList" class="com.boaz.camel.practice.beans.RecipentsListBean" />
+	<bean id="executor" class="java.util.concurrent.Executors" factory-method="newFixedThreadPool">
+		<constructor-arg index="0" value="16"/>
+	</bean>
+	<bean id="auditLogger" class="com.boaz.camel.practice.SimpleAuditLogger"></bean>
+	
+	<routeContext id="simpleCamelRoutes" xmlns="http://camel.apache.org/schema/spring">		
+		<!-- <route>
+			 <from uri="ftp://rider.com/orders?username=rider&password=secret" />
+			 <from uri="file:data/input?noop=true" />
+			 <process ref="ftpToJmsProcessor"/>
+			<to uri="jms:queue:incomingOrders" />
+		</route> -->
+		<route>
+			 <from uri="file:data/input?noop=true" />
+			 <wireTap uri="direct://auditRoute"/>
+			 <!-- <setHeader headerName="customer">
+			 	<xpath>/person/@customer</xpath>
+			 </setHeader>-->
+			 <bean ref="recipentsList"/>
+		</route>
+		<route>
+			<from uri="direct://auditRoute"/>
+			<bean ref="auditLogger"/>
+		</route>
+	</routeContext>
+</beans>

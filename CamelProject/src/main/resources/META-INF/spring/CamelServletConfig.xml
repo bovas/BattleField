@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://camel.apache.org/schema/spring
+	http://camel.apache.org/schema/spring/camel-spring.xsd">
+	
+	<routeContext id="servletRouteCtx" xmlns="http://camel.apache.org/schema/spring">
+		<!-- Simple servlet configuration -->
+		<route>
+			<from uri="servlet:///hello"/>
+			<choice>
+				<when>
+					<header>name</header>
+					<transform>
+						<simple>Hello ${header.name}, Welcome to new world</simple>
+					</transform>
+				</when>
+				<otherwise>
+					<transform>
+						<constant>Add a parameter name, then will welcome u too</constant>
+					</transform>
+				</otherwise>
+			</choice>
+		</route>
+		 
+		 <route>
+		 	<from uri="servlet:///retrivePersons"/>
+		 	<unmarshal>
+		 		<json library="Jackson" unmarshalTypeName="com.boaz.camel.practice.request.PersonsRequest" />
+		 	</unmarshal>
+		 	<marshal> 
+		 		<json library="Jackson" unmarshalTypeName="com.boaz.camel.practice.response.PersonsResponse" />
+		 	</marshal>
+		 	<to uri="mock:result"/>
+		 </route>
+	</routeContext>
+</beans>

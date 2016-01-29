@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<configuration>
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
+	</property>
+	
+	<!-- Running on local mode 
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>local</value>
+	</property>-->
+	
+</configuration>

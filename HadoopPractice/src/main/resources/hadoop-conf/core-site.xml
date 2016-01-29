@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<configuration>
+	<property>
+		<name>fs.defaultFS</name>
+		<value>hdfs://localhost/</value>
+	</property>
+		
+	<!-- For running on local file system
+		<property>
+		<name>fs.defaultFS</name>
+		<value>file:///</value>
+		</property>	-->
+</configuration>

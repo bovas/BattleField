@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>examples</artifactId>
+      <version>2.15.1</version>
+  </parent>
+  
+  <groupId>com.boaz.camel.practice</groupId>
+  <artifactId>CamelProject</artifactId>
+  <packaging>war</packaging>
+
+  <name>CamelProject</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+     <!-- camel -->
+       <dependency>
+           <groupId>org.apache.camel</groupId>
+           <artifactId>camel-core</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.apache.camel</groupId>
+           <artifactId>camel-spring</artifactId>
+       </dependency>
+       <dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-ftp</artifactId>
+		</dependency>
+       <dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jetty</artifactId>
+			<version>2.15.1</version>			
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-fop</artifactId>			
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-pdf</artifactId>
+			<version>2.16.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson</artifactId>			
+		</dependency>
+       <dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>5.3.2</version>
+		</dependency>
+       
+       <!-- we need spring web -->
+       <dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-web</artifactId>
+       </dependency>
+
+       <!-- logging -->
+       <dependency>
+           <groupId>log4j</groupId>
+           <artifactId>log4j</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.slf4j</groupId>
+           <artifactId>slf4j-log4j12</artifactId>
+       </dependency>
+  </dependencies>
+  <build>
+  	<plugins>
+       <!-- Allows the example to be run via 'mvn compile exec:java' -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <configuration>
+          <includePluginDependencies>false</includePluginDependencies>
+        </configuration>
+      </plugin>
+
+      <!-- Allows the routes to be run via 'mvn camel:run' -->
+      <plugin>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-maven-plugin</artifactId>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.6</version>
+      </plugin>
+      
+      <!-- Jrebel xml generation plugin
+      <plugin>
+		  <groupId>org.zeroturnaround</groupId>
+		  <artifactId>jrebel-maven-plugin</artifactId>
+		  <version>1.1.5</version>
+		  <executions>
+		    <execution>
+		      <id>generate-rebel-xml</id>
+		      <phase>process-resources</phase>
+		      <goals>
+		        <goal>generate</goal>
+		      </goals>
+		    </execution>
+		  </executions>
+		</plugin> -->
+    </plugins>
+  </build>
+</project>
