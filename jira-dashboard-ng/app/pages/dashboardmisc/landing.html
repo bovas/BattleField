@@ -1,0 +1,45 @@
+<div class="container" ng-app="JiraRESTClientApp">
+      <div ng-controller="ApplicationController">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+				    <div class="pull-left"><a href="http://www.sam-bi.com" target="_blanck"><img alt="sam-bi.com" src="./images/logo.png"></a></div>
+					<a class="navbar-brand" href="/">Jira REST Client with AngularJS</a>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="#login"><i class="fa fa-shield"></i> Login</a></li>
+					<li><a href="#search"><i class="fa fa-shield"></i> Search</a></li>
+					<li><a href="#create"><i class="fa fa-shield"></i> Create</a></li>
+				</ul>
+			</div>
+		</nav>
+        <div>
+			<!-- angular templating -->
+			<!-- this is where content will be injected -->
+			<div ng-view></div>
+		</div>
+        <div class="well" ng-show="jiraData.currentIssue != null"> <a ng-click="showAll()">&laquo Back</a>
+            <h4>{{jiraData.issue.title}}</h4>
+            <dl class="dl-horizontal">
+				<dt>Number</dt>
+                <dd>{{jiraData.currentIssue.number}}</dd>
+				<dt>Date</dt>
+                <dd>{{jiraData.currentIssue.created_at | date:'short'}}</dd>
+				<dt>Last Update</dt>
+                <dd>{{jiraData.currentIssue.updated_at | date:'short'}}</dd>
+				<dt>State</dt>
+                <dd>{{jiraData.currentIssue.state}}</dd>
+				<dt>URL</dt>
+                <dd>{{jiraData.currentIssue.url}}</dd>
+				<dt>Asignee</dt>
+                <dd>{{jiraData.currentIssue.assignee}}</dd>
+				<dt>Body</dt>
+                <dd>{{jiraData.currentIssue.body}}</dd>
+            </dl>
+        </div>
+    </div>
+	<div class="footer">
+        <p>&copy; <a href="http://www.sam-bi.com" target="_blank">www.sam-bi.com</a> 2014</p>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" ng-app="dashboardApp">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard Application</title>
+ 
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <script type="text/javascript" src="bower_components/d3/d3.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-mocks/angular-mocks.js"></script>
+  <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+  <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>  
+  
+  <script type="text/javascript" src="app.js"></script>
+  
+  <script type="text/javascript" src="pages/d3charts/d3chartsCtrl.js"></script>
+  <script type="text/javascript" src="pages/d3charts/chart.js"></script>
+  <script type="text/javascript" src="pages/dashboardmisc/dashboardAppMainCtrl.js"></script>  
+ 
+  <link href="assets/css/app.css" rel="stylesheet">
+  <link href="assets/css/chart.css" rel="stylesheet">
+  
+</head>
+<body>
+    <div ng-view>
+    </div>
+</body>
+</html>
