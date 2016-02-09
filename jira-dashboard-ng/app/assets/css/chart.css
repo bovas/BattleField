@@ -58,3 +58,19 @@ circle {
 	stroke: steelblue;
 	stroke-width: 1;
 }
+
+/*********DONUT CHART WITH LINES START***********/
+.label-text {
+    alignment-baseline: middle;
+    font-size: 12px;
+    font-family: arial,helvetica,"sans-serif";
+    fill: #393939;
+}
+.label-line {
+    stroke-width: 1;
+    stroke: #393939;
+}
+.label-circle {
+    fill: #393939;
+}
+/*********DONUT CHART WITH LINES END***********/

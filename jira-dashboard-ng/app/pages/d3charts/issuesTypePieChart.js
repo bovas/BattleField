@@ -2,7 +2,7 @@ angular.module('myChart')
 .factory('d3', function() {
   return d3;
 })
-.directive('issuesTypeBarChart', ["d3",
+.directive('issuesTypePieChart', ["d3",
   function(d3){
 
     function draw(svg, width, height, data) {
