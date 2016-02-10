@@ -2,6 +2,15 @@ angular.module('myChart')
 .controller('d3chartsCtrl', ['$scope', '$interval',
   function ($scope, $interval) {
     $scope.createBarChartData = function(){
+    	$scope.issuesTypeDataMulti = [{ issueType:'JIRA', issueDetails : [{type:'In Progress',count: 30},
+    			                         {type:'Closed',count: 30},
+    			                         {type:'Open',count: 20},
+    			                         {type:'On hold',count: 20}]},
+    			                      { issueType:'OC', issueDetails : [{type:'In Progress',count: 30},
+    			                         {type:'Closed',count: 40},
+    			                         {type:'Open',count: 10},
+    			                         {type:'On hold',count: 20}]}];   
+    	
 		$scope.pagesByData = [{pages:'CM',count: 10},
 		                      {pages:'AM',count: 20},
 		                      {pages:'M2M',count: 30},

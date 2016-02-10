@@ -73,4 +73,7 @@ circle {
 .label-circle {
     fill: #393939;
 }
+.state{
+	float:left;
+}
 /*********DONUT CHART WITH LINES END***********/
